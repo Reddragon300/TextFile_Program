@@ -13,6 +13,7 @@ from tkinter import messagebox, filedialog
 import os
 import shutil
 
+
 class Editor(Frame):
     def __init__(self):
         ''' Setup the window and widgets '''
@@ -44,7 +45,8 @@ class Editor(Frame):
         self._yScroll = Scrollbar(self._textPane, orient=VERTICAL)
         self._yScroll.grid(row=0, column=1, sticky=N+S)
 
-        self._outputArea = Text(self._textPane, width=80, height=20, yscrollcommand=self._yScroll.set)
+        self._outputArea = Text(self._textPane, width=80,
+                                height=20, yscrollcommand=self._yScroll.set)
         self._outputArea.grid(row=0, column=0, sticky=W+E+N+S)
         self._yScroll['command'] = self._outputArea.yview
 
@@ -66,7 +68,8 @@ class Editor(Frame):
                         self._outputArea.delete('1.0', END)
                         self._outputArea.insert('1.0', file.read())
                 except IOError:
-                    messagebox.showerror(message='Error reading file!', parent=self)
+                    messagebox.showerror(
+                        message='Error reading file!', parent=self)
 
     def _saveFile(self):
         filename = self._fileVar.get()
@@ -106,18 +109,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-        
-                
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
